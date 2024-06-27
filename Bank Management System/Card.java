@@ -1,4 +1,9 @@
 public class Card {
-    private String suit;
+    private int alu;
+
+    public void out()
+    {
+        System.out.println("alu = " + alu);
+    }
     
 }
