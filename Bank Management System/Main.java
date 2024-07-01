@@ -4,5 +4,6 @@ class Main {
         Bank bc=new Bank();
         System.out.println("Your code is start here ");
         bc.newAccount();
+        bc.account_Details();
  }
 }
