@@ -1,4 +1,5 @@
 import java.util.*;
+
 @SuppressWarnings("unused")
 class Bank {
     private String name;
@@ -23,8 +24,7 @@ class Bank {
 
     void newAccount() {
         int ch = 1;
-        label:
-        while (ch == 1) {
+        label: while (ch == 1) {
             System.out.println("Enter the name of the person: ");
             name = sc.nextLine();
             name = name.toLowerCase();
@@ -178,33 +178,47 @@ class Bank {
         }
     }
 
+    void account_Details() {
+        System.out.println("************** SONAR BANK BOLODPUR ***********");
+        System.out.println("Branch Name " + branch + "/t/tPhone " + contact + "");
+        System.out.println("BFSC Code " + ifsc + " ");
+        System.out.println("Account Holder " + name + " ");
+        System.out.println("Account Number " + account_no + " ");
+        System.err.println("Address " + address + " ");
+        System.out.println("Birthday " + date_of_birth + " ");
+        System.out.println("Email " + email + " ");
 
-    void account_Details()
-    {
-     System.out.println("************** SONAR BANK BOLODPUR ***********");
-     System.out.println("Branch Name "+branch+"/t/tPhone "+contact+"");
-     System.out.println("BFSC Code "+ifsc+" ");
-     System.out.println("Account Holder "+name+" ");
-     System.out.println("Account Number "+account_no+" ");
-     System.err.println("Address "+address+" ");
-     System.out.println("Birthday "+date_of_birth+" ");
-     System.out.println("Email "+email+" ");
-     if(gender==1)
-     {
-        System.out.print("Gender Male");
-     }
-     else if(gender==2)
-     {
-        System.out.print("Gender Female");
-     }
-     else
-     {
-        System.out.println("Gender Gey");
-     }
-     System.out.println("PIN "+pin_code+" ");
-     System.out.println("Account Balance "+balance+" ");
-     System.out.println("Fixed Deposit "+transaction_amount_fixed+" ");
-     System.out.println(" ");
+        if (gender == 1) {
+            System.out.print("Gender Male");
+        } else if (gender == 2) {
+            System.out.print("Gender Female");
+        } else {
+            System.out.println("Gender Gey");
+        }
+        System.out.println("PIN " + pin_code + " ");
+        System.out.println("Account Balance " + balance + " ");
+        System.out.println("Fixed Deposit " + transaction_amount_fixed + " ");
+        System.out.println(" ");
 
+    }
+
+    void deposit() {
+        System.out.println("Enter the amount you want to deposit: ");
+        transaction_amount = sc.nextDouble();
+        balance = balance + transaction_amount;
+
+    }
+
+    void withdraw() {
+        System.out.print("Enter the you want the withdrow :");
+        transaction_amount = sc.nextDouble();
+
+        if (balance > 0.00) {
+            balance = balance - transaction_amount;
+            System.err.println("*********** SUCCESSFULLY WITHDEOW DONE ************");
+
+        } else {
+            System.err.println("!!!!!!! INSUFFICIENT BALANCE !!!!!!!!");
+        }
     }
 }
