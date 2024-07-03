@@ -24,18 +24,17 @@ class Bank {
 
     void newAccount() {
         int ch = 1;
-        label: while (ch == 1) {
+        label:
+        while (ch == 1) {
             System.out.println("Enter the name of the person: ");
             name = sc.nextLine();
             name = name.toLowerCase();
 
-            System.out.println("Enter the mobile number: ");
+            System.out.println("Enter the mobile 11 digit number: ");
             contact = sc.nextLine();
             if (contact.length() != 10) {
                 System.out.println("!!! Invalid mobile number !!! ");
                 break label;
-            } else {
-                System.out.println("This is a valid number ");
             }
 
             try {
@@ -74,9 +73,9 @@ class Bank {
                 System.out.println("!!! Sorry, a national ID card is a must for opening a new bank account !!! ");
                 break label;
             } else if (original_national_id_card == 1) {
-                sc.nextLine(); // consume newline character
-                System.out.println("Enter the national ID card number: ");
-                national_id_no = sc.nextLine().toUpperCase(); // fixing the placement
+                sc.nextLine(); 
+                System.out.println("Enter the 12 digit national ID card number: ");
+                national_id_no = sc.nextLine().toUpperCase(); 
                 if (national_id_no.length() != 12) {
                     System.out.println("!!! Invalid national ID card number !!! ");
                     break label;
@@ -96,7 +95,7 @@ class Bank {
                 break label;
             }
             if (original_pin == 1) {
-                sc.nextLine(); // consume newline character
+                sc.nextLine(); 
                 System.out.println("Enter the 10-digit PAN card number: ");
                 pin_code = sc.nextLine().toUpperCase();
                 if (pin_code.length() != 10) {
@@ -129,7 +128,7 @@ class Bank {
                 System.out.println("!!! Invalid account number !!! ");
                 break;
             }
-            // Correcting the account number validation logic
+        
             if (account_no < 10000000 || account_no > 99999999) {
                 System.out.println("Account number not available ");
                 System.out.println("Sorry for inconvenience");
@@ -137,7 +136,7 @@ class Bank {
             }
 
             try {
-                System.out.println("Enter the opening balance:");
+                System.out.println("Enter the opening balance at lest 500$ :");
                 balance = sc.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println("Invalid opening balance");
@@ -148,11 +147,11 @@ class Bank {
                 break label;
             }
 
-            sc.nextLine(); // consume newline character
+            sc.nextLine(); 
             System.out.println("Enter the branch name: ");
             branch = sc.nextLine();
 
-            System.out.println("Enter the IFSC code of the branch: ");
+            System.out.println("Enter the 11 digit BFSC code of the branch: ");
             ifsc = sc.nextLine();
             if (ifsc.length() != 11 || ifsc.charAt(4) != '0') {
                 System.out.println("Invalid IFSC code");
@@ -160,14 +159,14 @@ class Bank {
             }
 
             try {
-                System.out.println("Enter your PIN code: ");
+                System.out.println("Enter your six digit PIN code: ");
                 pin_code = sc.nextLine();
-                int pin = Integer.parseInt(pin_code); // Convert to integer for validation
+                int pin = Integer.parseInt(pin_code); 
                 if (pin < 100000 || pin > 999999) {
                     System.out.println("Invalid PIN code");
                     break label;
                 }
-            } catch (InputMismatchException | NumberFormatException e) {
+            } catch (InputMismatchException  e) {
                 System.out.println("Invalid PIN code");
                 break;
             }
@@ -180,24 +179,22 @@ class Bank {
 
     void account_Details() {
         System.out.println("************** SONAR BANK BOLODPUR ***********");
-        System.out.println("Branch Name " + branch + "/t/tPhone " + contact + "");
-        System.out.println("BFSC Code " + ifsc + " ");
-        System.out.println("Account Holder " + name + " ");
-        System.out.println("Account Number " + account_no + " ");
-        System.err.println("Address " + address + " ");
-        System.out.println("Birthday " + date_of_birth + " ");
-        System.out.println("Email " + email + " ");
+        System.out.println("Branch Name      ::>" + branch + "\t\tPhone      ::>" + contact + "");
+        System.out.println("BFSC Code      ::>" + ifsc + " ");
+        System.out.println("Account Holder      ::>" + name + " ");
+        System.out.println("Account Number      ::>" + account_no + " ");
+        System.err.println("Address      ::>" + address + " ");
+        System.out.println("Birthday      ::>" + date_of_birth + " ");
+        System.out.println("Email      ::>" + email + " ");
 
-        if (gender == 1) {
-            System.out.print("Gender Male");
-        } else if (gender == 2) {
-            System.out.print("Gender Female");
-        } else {
-            System.out.println("Gender Gey");
+        switch (gender) {
+            case 1 -> System.out.println("Gender      ::>Male");
+            case 2 -> System.out.println("Gender      ::>Female");
+            default -> System.out.println("Gender      ::>Gey");
         }
-        System.out.println("PIN " + pin_code + " ");
-        System.out.println("Account Balance " + balance + " ");
-        System.out.println("Fixed Deposit " + transaction_amount_fixed + " ");
+        System.out.println("PIN      ::>" + pin_code + " ");
+        System.out.println("Account Balance      ::>" + balance + " ");
+        System.out.println("Fixed Deposit      ::>" + transaction_amount_fixed + " ");
         System.out.println(" ");
 
     }
@@ -215,10 +212,64 @@ class Bank {
 
         if (balance > 0.00) {
             balance = balance - transaction_amount;
-            System.err.println("*********** SUCCESSFULLY WITHDEOW DONE ************");
+            System.err.println("*********** SUCCESSFULLY WITHDROW DONE ************");
 
         } else {
             System.err.println("!!!!!!! INSUFFICIENT BALANCE !!!!!!!!");
         }
     }
+
+    void transferFunds()
+    {
+        System.out.println("*************YOUR TRANSFERFUNDS IS SUCCESSFULLY DONE**************");
+    }
+
+    void applyDebitCard()
+    {
+        String accou_name;
+        String accou_cont;
+        String accou_holder_address;
+        String debit_card_number;
+        System.out.println("Enter the account holder name :");
+        accou_name = sc.nextLine();
+        System.out.println("Enter the account holder contact number :");
+        accou_cont = sc.nextLine();
+        System.out.println("Enter the account holder address :");
+        accou_holder_address = sc.nextLine();
+        System.out.println("Enter the debit card number :");
+        debit_card_number = sc.nextLine();
+        System.out.println("Debit card number  :"+debit_card_number+"");
+        System.out.println("***********THANKS FOR APPLYING SONAR BANK DEBIT CARD************");
+
+
+    }
+
+    void applyCreditCard() {
+        double credit;
+        if(balance<1000){
+        String accou_name;
+        String accou_cont;
+        String accou_holder_address;
+        String credit_card_number;
+        credit = balance * 30 / 100;
+        System.out.println("Enter the account holder name :");
+        accou_name = sc.nextLine();
+        System.out.println("Enter the account holder contact number :");
+        accou_cont = sc.nextLine();
+        System.out.println("Enter the account holder address :");
+        accou_holder_address = sc.nextLine();
+        System.out.println("Enter the credit card number :");
+        credit_card_number= sc.nextLine();
+        System.out.println("Your credit card limit is :"+credit+"");
+        System.out.println("Credit card number  :" + credit_card_number + "");
+        System.out.println("***********THANKS FOR APPLYING SONAR BANK CREDIT CARD************");
+
+        }
+        else
+        {
+            System.out.println("!!!!!!!!account holder does,t eligible for credit card!!!! ");
+        }
+    }
+
+    
 }
